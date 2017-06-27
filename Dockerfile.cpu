@@ -13,7 +13,7 @@ RUN apt update \
 &&  git clone https://github.com/miyosuda/Arcade-Learning-Environment.git \
 &&  cd /notebooks/async_deep_reinforce/Arcade-Learning-Environment \
 &&  cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=OFF . \
-&&  make -j 8 \
+&&  make -j \
 &&  pip3 install . \
 &&  sed -i 's/USE_LSTM = True/USE_LSTM = False/' /notebooks/async_deep_reinforce/constants.py \
 &&  sed -i 's/USE_GPU = True/USE_GPU = False/' /notebooks/async_deep_reinforce/constants.py
