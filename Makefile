@@ -1,10 +1,11 @@
 CONTAINER=a3c
-REGISTRY=""
+REGISTRY=
 VOLUME='notebooks'
-IMAGE=$(REGISTRY)$(CONTAINER)-image
+PROCESSOR=gpu
+IMAGE=$(REGISTRY)$(CONTAINER)-image:latest-$(PROCESSOR)
 
 build:
-	nvidia-docker build --compress --pull -t $(IMAGE) .
+	nvidia-docker build --compress --pull -t $(IMAGE) -f Dockerfile.$(PROCESSOR) .
 push:
 	nvidia-docker push $(IMAGE)
 run:
