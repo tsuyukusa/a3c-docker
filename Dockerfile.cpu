@@ -1,6 +1,8 @@
 FROM tensorflow/tensorflow:latest-py3
 MAINTAINER tsuyukusa
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # apt cahce
 # RUN echo 'Acquire::http { Proxy "http://172.17.0.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy \
 RUN apt update \
