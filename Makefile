@@ -6,7 +6,7 @@ IMAGE=$(REGISTRY)$(CONTAINER)-image:latest-$(PROCESSOR)
 
 ifeq ($(PROCESSOR), gpu)
 	COMMAND=nvidia-docker
-else ($(PROCESSOR), cpu)
+else
 	COMMAND=docker
 endif
 
@@ -26,7 +26,7 @@ run:
 		--hostname=$(CONTAINER) \
 		$(IMAGE)
 vol:
-	$(COMMAND) volume inspect $(VOLUME) -f '{{.Mountpoint}}'
+	@$(COMMAND) volume inspect $(VOLUME) -f '{{.Mountpoint}}'
 shell:
 	$(COMMAND) exec -it $(CONTAINER) /bin/bash
 clean: rm
